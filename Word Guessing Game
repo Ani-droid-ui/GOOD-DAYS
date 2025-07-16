@@ -1,0 +1,47 @@
+import random
+
+WORDS = {
+    'Balloon': [
+        "This word is an inflatable:",
+        "It makes a squeaky noise and blows air when popped"
+    ],
+    'House': [
+        "It's warm and safe:",
+        "You live in it"
+    ],
+    'Dinosaur': [
+        "It used to live:",
+        "It roars"
+    ]
+}
+
+def play_game():
+    current_word = random.choice(list(WORDS.keys()))
+    clues = WORDS[current_word]
+
+    print("🎯 Word Guessing Game")
+    print("Try to guess the word based on the clues!")
+    print("-" * 40)
+
+    for i, clue in enumerate(clues):
+        print(f"\nClue {i + 1}: {clue}")
+        guess = input("Your guess: ").strip()
+
+        if guess.lower() == current_word.lower():
+            print(f"\n🎉 Congratulations! You guessed it correctly!")
+            print(f"The word was: {current_word}")
+            return True
+
+    print(f"\n😞 Game Over! The word was: {current_word}")
+    return False
+
+def main():
+    while True:
+        play_game()
+        play_again = input("\nDo you want to play again? (y/n): ").strip().lower()
+        if play_again != 'y':
+            print("Thanks for playing!")
+            break
+
+if __name__ == '__main__':
+    main()
